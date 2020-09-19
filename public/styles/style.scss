@@ -135,6 +135,11 @@ body {
     border-radius: 0.5rem;
     width: 50%;
     outline: none;
+    font-size: 1rem;
+    border: 2px solid black;
+    &:focus {
+      border: 2px solid $primaryColor;
+    }
   }
   i {
     position: absolute;
