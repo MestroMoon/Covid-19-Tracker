@@ -5,12 +5,15 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Noto Sans", sans-serif;
-  background-color: #f7f8fa;
+  background-color: $offwhiteColor;
 }
 
-.header {
+#header {
   background-color: $primaryColor;
   max-height: max-content;
   padding: 1rem;
@@ -21,23 +24,45 @@ body {
   a {
     text-decoration: none;
     color: $whiteColor;
-  }
-  .right-top-content span {
-    padding-left: 1.5rem;
-    color: $whiteColor;
-    &:hover {
-      cursor: pointer;
+    transition: all 0.1s;
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: $whiteColor;
+      transition: all 0.3s;
     }
-    button {
-      outline: none;
-      border: 1px solid $whiteColor;
-      border-radius: 5px;
-      background-color: $primaryColor;
-      padding: 0.6rem 1rem;
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .right-top-content {
+    display: flex;
+    align-items: center;
+    span {
+      padding-left: 1.5rem;
       color: $whiteColor;
-      box-shadow: 0px 0px 5px #c4c4c4;
-      &:hover {
-        cursor: pointer;
+
+      button {
+        outline: none;
+        border: 1px solid $whiteColor;
+        border-radius: 5px;
+        background-color: $primaryColor;
+        padding: 0.6rem 1rem;
+        color: $whiteColor;
+        box-shadow: 0px 0px 5px $shadowColor;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+        &:hover {
+          cursor: pointer;
+          background-color: $whiteColor;
+          color: black;
+        }
       }
     }
   }
@@ -64,26 +89,58 @@ body {
     font-weight: 300;
     font-size: 40px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background-color: #f7f8fa;
-    .world-cases {
-      color: #aaa;
-    }
-    .world-deaths {
-      color: red;
-    }
-    .world-recovered {
-      color: #8aca2b;
-    }
+    background-color: $whiteColor;
   }
+  .world-cases {
+    color: #aaa;
+  }
+  .world-deaths {
+    color: red;
+  }
+  .world-recovered,
+  .todayrecovered {
+    color: #8aca2b;
+  }
+
+  .todaycases,
+  .todaydeaths {
+    color: #cc1034;
+  }
+
   .section-heading {
     margin: 0 1rem 1.5rem 1rem;
     width: max-content;
     height: max-content;
     text-transform: uppercase;
-    background-color: #f5f5f5;
+    background-color: $whiteColor;
+    color: $primaryColor;
     font-size: xxx-large;
     padding: 1rem 3.5rem;
     font-weight: 900;
+  }
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  #search {
+    margin: 1rem 2rem 0 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 50%;
+    outline: none;
+  }
+  i {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    &:hover {
+      cursor: pointer;
+      color: $primaryColor;
+    }
   }
 }
 
@@ -98,14 +155,10 @@ body {
   min-width: 400px;
   font-size: 0.9em;
   border-collapse: collapse;
-  // font-family: 'Noto Sans', sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
+  background-color: white;
   thead {
-    // background-color: $primaryColor;
-    // border-radius: 0.5rem;
     tr {
-      color: #000;
       text-align: center;
       span {
         display: flex;
@@ -113,11 +166,16 @@ body {
       }
     }
   }
+  th {
+    background-color: $primaryColor;
+    position: sticky;
+    top: 0;
+    color: white;
+  }
 
   td,
   th {
     padding: 12px 15px;
-    border: 1px solid #ddd;
   }
 
   th:nth-child(1),
@@ -126,8 +184,13 @@ body {
   }
 
   tbody tr {
-    border-bottom: 1px solid #ddd;
     font-weight: bold;
+    transition: all 0.3s;
+    img {
+      width: 3.5rem;
+      height: auto;
+      margin-right: 1rem;
+    }
     &:nth-of-type(even) {
       background-color: #f9fbff;
     }
@@ -137,6 +200,23 @@ body {
     &:hover {
       color: $primaryColor;
       font-weight: 900;
+      border-bottom: 2px solid #ddd;
     }
   }
+  td:nth-child(2) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.arrow {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  font-size: 3rem;
+  color: $primaryColor;
+  background-color: $whiteColor;
+  border-radius: 2rem;
+  display: none;
 }

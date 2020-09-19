@@ -1,10 +1,15 @@
-
-
 $(window).on('load', function () {
     countrydata();
     worlddata();
 });
 
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+        $('.arrow').fadeIn();
+    } else {
+        $('.arrow').fadeOut();
+    }
+});
 
 const formatter = new Intl.NumberFormat();
 
@@ -14,7 +19,32 @@ function worlddata() {
         $('.world-cases').html(formatter.format(data.cases));
         $('.world-deaths').html(formatter.format(data.deaths));
         $('.world-recovered').html(formatter.format(data.recovered));
+        $('.todaycases').html("+" + formatter.format(data.todayCases));
+        $('.todaydeaths').html("+" + formatter.format(data.todayDeaths));
+        $('.todayrecovered').html("+" + formatter.format(data.todayRecovered));
+
     });
+}
+
+
+function search() {
+
+    const filter = document.getElementById("search").value.toUpperCase();
+    const table = document.getElementById("covid-table");
+    const row = table.getElementsByTagName("tr");
+
+    for (i = 0; i < row.length; i++) {
+        const cell = row[i].getElementsByTagName('td')[1];
+        if (cell) {
+            const textvalue = cell.textContent || cell.innerHTML;
+            if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                row[i].style.display = '';
+            } else {
+                row[i].style.display = 'none';
+            }
+        }
+    }
+
 }
 
 function countrydata() {
@@ -25,12 +55,11 @@ function countrydata() {
         table = document.getElementById('covid-table');
         for (i = 1; i < (data.length); i++) {
             var x = table.insertRow();
-
             x.insertCell(0);
             table.rows[i].cells[0].innerHTML = i;
 
             x.insertCell(1);
-            table.rows[i].cells[1].innerHTML = data[i - 1].country;
+            table.rows[i].cells[1].innerHTML = "<span><img src='" + data[i - 1].countryInfo.flag + "'/></span>" + "<span>" + data[i - 1].country + "</span>";
 
             x.insertCell(2);
             table.rows[i].cells[2].innerHTML = formatter.format(data[i - 1].cases);
@@ -49,6 +78,9 @@ function countrydata() {
 
             x.insertCell(4);
             table.rows[i].cells[4].innerHTML = formatter.format(data[i - 1].deaths);
+            if (data[i - 1].deaths === 0) {
+                table.rows[i].cells[4].innerHTML = "";
+            }
             table.rows[i].cells[4].style.textAlign = "right";
 
             x.insertCell(5);
@@ -64,6 +96,9 @@ function countrydata() {
 
             x.insertCell(6);
             table.rows[i].cells[6].innerHTML = formatter.format(data[i - 1].recovered);
+            if (data[i - 1].recovered === 0) {
+                table.rows[i].cells[6].innerHTML = "";
+            }
             table.rows[i].cells[6].style.textAlign = "right";
 
             x.insertCell(7);

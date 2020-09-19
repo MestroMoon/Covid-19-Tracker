@@ -3,12 +3,16 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Noto Sans", sans-serif;
   background-color: #f7f8fa;
 }
 
-.header {
+#header {
   background-color: #4a86ff;
   max-height: -webkit-max-content;
   max-height: -moz-max-content;
@@ -25,21 +29,42 @@ body {
           justify-content: space-between;
 }
 
-.header a {
+#header a {
   text-decoration: none;
   color: #fff;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 
-.header .right-top-content span {
+#header a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#header a:hover::after {
+  width: 100%;
+}
+
+#header .right-top-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#header .right-top-content span {
   padding-left: 1.5rem;
   color: #fff;
 }
 
-.header .right-top-content span:hover {
-  cursor: pointer;
-}
-
-.header .right-top-content span button {
+#header .right-top-content span button {
   outline: none;
   border: 1px solid #fff;
   border-radius: 5px;
@@ -48,10 +73,15 @@ body {
   color: #fff;
   -webkit-box-shadow: 0px 0px 5px #c4c4c4;
           box-shadow: 0px 0px 5px #c4c4c4;
+  font-size: 0.8rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.header .right-top-content span button:hover {
+#header .right-top-content span button:hover {
   cursor: pointer;
+  background-color: #fff;
+  color: black;
 }
 
 .first-sec {
@@ -99,19 +129,25 @@ body {
   font-size: 40px;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  background-color: #f7f8fa;
+  background-color: #fff;
 }
 
-.first-sec .card .world-cases {
+.first-sec .world-cases {
   color: #aaa;
 }
 
-.first-sec .card .world-deaths {
+.first-sec .world-deaths {
   color: red;
 }
 
-.first-sec .card .world-recovered {
+.first-sec .world-recovered,
+.first-sec .todayrecovered {
   color: #8aca2b;
+}
+
+.first-sec .todaycases,
+.first-sec .todaydeaths {
+  color: #cc1034;
 }
 
 .first-sec .section-heading {
@@ -123,10 +159,43 @@ body {
   height: -moz-max-content;
   height: max-content;
   text-transform: uppercase;
-  background-color: #f5f5f5;
+  background-color: #fff;
+  color: #4a86ff;
   font-size: xxx-large;
   padding: 1rem 3.5rem;
   font-weight: 900;
+}
+
+.searchbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.searchbox #search {
+  margin: 1rem 2rem 0 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 50%;
+  outline: none;
+}
+
+.searchbox i {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+}
+
+.searchbox i:hover {
+  cursor: pointer;
+  color: #4a86ff;
 }
 
 .api-details {
@@ -146,10 +215,10 @@ body {
   border-collapse: collapse;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
 }
 
 #covid-table thead tr {
-  color: #000;
   text-align: center;
 }
 
@@ -163,10 +232,17 @@ body {
           flex-direction: column;
 }
 
+#covid-table th {
+  background-color: #4a86ff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  color: white;
+}
+
 #covid-table td,
 #covid-table th {
   padding: 12px 15px;
-  border: 1px solid #ddd;
 }
 
 #covid-table th:nth-child(1),
@@ -175,8 +251,15 @@ body {
 }
 
 #covid-table tbody tr {
-  border-bottom: 1px solid #ddd;
   font-weight: bold;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#covid-table tbody tr img {
+  width: 3.5rem;
+  height: auto;
+  margin-right: 1rem;
 }
 
 #covid-table tbody tr:nth-of-type(even) {
@@ -190,5 +273,27 @@ body {
 #covid-table tbody tr:hover {
   color: #4a86ff;
   font-weight: 900;
+  border-bottom: 2px solid #ddd;
+}
+
+#covid-table td:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.arrow {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  font-size: 3rem;
+  color: #4a86ff;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
