@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>Covid-Tracker</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <span class="logo">
+        <a href="#">
+          <i class="fas fa-virus"></i>
+          CORONAVIRUS-TRACKER
+        </a>
+      </span>
+      <span class="right-top-content">
+        <span>
+          <i class="fas fa-play-circle"></i>
+          How to protect yourself
+        </span>
+        <span>
+          <button>Are you sick?</button>
+        </span>
+      </span>
+    </div>
+    <section class="first-sec">
+      <span class="card section-heading"> Covid-19 World-Counter </span>
+      <span class="card-details">
+        <span class="card">
+          Coronavirus Cases:
+          <h2 class="world-cases"></h2>
+        </span>
+        <span class="card">
+          Recovered:
+          <h2 class="world-recovered"></h2>
+        </span>
+        <span class="card">
+          Deaths:
+          <h2 class="world-deaths"></h2>
+        </span>
+      </span>
+    </section>
+
+    <div class="api-details">
+      <table id="covid-table">
+        <thead>
+          <tr>
+            <th class="sr-no">
+              <span>#</span>
+            </th>
+            <th class="country">
+              <span>Country,</span>
+              <span>Other</span>
+            </th>
+            <th class="total-cases">
+              <span>Total</span>
+              <span>Cases</span>
+            </th>
+            <th class="new-cases">
+              <span>New</span>
+              <span>Cases</span>
+            </th>
+            <th class="total-deaths">
+              <span>Total</span>
+              <span>Deaths</span>
+            </th>
+            <th class="new-deaths">
+              <span>New</span>
+              <span>Deaths</span>
+            </th>
+            <th class="total-recovered">
+              <span>Total</span>
+              <span>Recovered</span>
+            </th>
+            <th class="active-cases">
+              <span>Active</span>
+              <span>Cases</span>
+            </th>
+            <th class="serious-critical">
+              <span>Serious,</span>
+              <span>Critical</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tbody>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
