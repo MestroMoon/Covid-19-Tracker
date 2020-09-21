@@ -154,6 +154,7 @@ body {
 
 .api-details {
   display: flex;
+
   justify-content: center;
 }
 
@@ -242,5 +243,9 @@ body {
     text-align: center;
     width: auto !important;
     height: auto !important;
+  }
+
+  .api-details {
+    overflow: scroll;
   }
 }

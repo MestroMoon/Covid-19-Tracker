@@ -319,5 +319,8 @@ body {
     width: auto !important;
     height: auto !important;
   }
+  .api-details {
+    overflow: scroll;
+  }
 }
 /*# sourceMappingURL=style.css.map */
