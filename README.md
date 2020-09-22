@@ -1,13 +1,13 @@
 # Covid-19 Tracker.
 
-# Live Demo : https://covid-19-tracker-ab659.web.app/
+# [Live Demo](https://covid-19-tracker-ab659.web.app/ "Covid-19 Tracker")
 
 # Covid Tracker which provide data from all over the world.
 
-# It has sweet little search box which will give details of any country instantly. 
+**It has sweet little search box which will give details of any country instantly. 
 
-# It also has GoToTop Functionality which will be visible when scrolled down
+It also has GoToTop Functionality which will be visible when scrolled down
 
-# Site is Purely Made for Desktop version
+Site is Purely Made for Desktop version
 
-# Skills used - Jquery, JavaScript, SASS
+Skills used - Jquery, JavaScript, SASS**
